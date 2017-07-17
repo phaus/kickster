@@ -1,12 +1,17 @@
 #{extends 'main.html' /}
-
-<h2>Edit Player</h2>
-
-<div class="entity">
-#{form @Players.update(), id:'createForm'}
-	#{include 'Players/_form.html' /}
-	<input class="btn btn-primary" type="submit" name="submit" value="Save" />
-#{/form}
+#{set title:'Edit Player' /}
+<div class="row">
+    <h2>Edit Player</h2>
+    <div class="entity">
+        <fieldset>
+            #{form @Players.update(), id:'createForm'}
+            #{include 'Players/_form.html' /}
+            <div class="form-actions">
+                <input  class="btn btn-large btn-primary" type="submit" name="submit" value="Save" />
+                <a class="btn btn-large" href="@{Players.index}">Cancel</a>
+            </div>
+            #{/form}
+        </fieldset>
+    </div>
 </div>
 
-<a div class="btn" href="@{Players.index}">Cancel</a>

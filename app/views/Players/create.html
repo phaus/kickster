@@ -1,12 +1,18 @@
 #{extends 'main.html' /}
-
-<h2>Create Player</h2>
-
-<div class="entity">
-#{form @Players.save(), id:'createForm'}
-	#{include 'Players/_form.html' /}
-	<input type="submit" name="submit" value="Save" />
-#{/form}
+#{set title:'Create Player' /}
+<div class="row">
+    <h2>Create Player</h2>
+    <div class="entity">
+        <fieldset>
+            <legend></legend>
+            #{form @Players.save(), id:'createForm'}
+            #{include 'Players/_form.html' /}
+            <div class="form-actions">
+                <input  class="btn btn-large btn-primary" type="submit" name="submit" value="Save" />
+                <a  class="btn btn-large" href="@{Players.index}">Cancel</a>
+            </div>
+            #{/form}
+        </fieldset>
+    </div>
 </div>
 
-<a href="@{Players.index}">Cancel</a>

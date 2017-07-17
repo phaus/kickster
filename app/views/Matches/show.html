@@ -1,76 +1,21 @@
 #{extends 'main.html' /}
-
-<h2>View Match</h2>
-
-<div class="entity">
-
-  
-	<div class="row">
-		<span class="elem">
-			team1:
-		</span>
-		<span class="value">
-      ${entity.team1}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			team2:
-		</span>
-		<span class="value">
-      ${entity.team2}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			scoreTeam1:
-		</span>
-		<span class="value">
-      ${entity.scoreTeam1}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			scoreTeam2:
-		</span>
-		<span class="value">
-      ${entity.scoreTeam2}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			date:
-		</span>
-		<span class="value">
-      ${entity.date}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			id:
-		</span>
-		<span class="value">
-      ${entity.id}
-		</span>
-	</div>
-  
-
+#{set title:'Show Match' /}
+<div class="row">
+    <div class="hero-unit">
+        <h2>Show Match</h2>
+        <p>
+        <dl>
+                                    <dt>team1</dt><dd>${match.team1}</dd>
+                                                <dt>team2</dt><dd>${match.team2}</dd>
+                                                <dt>scoreTeam1</dt><dd>${match.scoreTeam1}</dd>
+                                                <dt>scoreTeam2</dt><dd>${match.scoreTeam2}</dd>
+                                                <dt>date</dt><dd>${match.date}</dd>
+                                                <dt>id</dt><dd>${match.id}</dd>
+                                </dl>
+        </p>
+        <p>
+            <a class="btn btn-large btn-primary" href="@{Matches.index}">Back</a>
+        </p>
+    </div>
 </div>
-
-<a href="@{Matches.index}">Back</a>
 

@@ -1,41 +1,74 @@
+    #{field 'match.team1'}
 <div class="control-group">
-    <div class="controls docs-input-sizes">
-        <select class="input-xlarge" name="entity.team1.id">
-            <option value="">Team 1</option>
-            %{ models.Team.all().fetch().sort{ it.toString() }.each() { }%
-            %{
+  <label class="control-label" for="${field.name}">Team1</label>  <div class="field">
+                                    <select name="${field.name}.id">
+                                    <option value="">(None)</option>
+                      %{ models.Team.all().fetch().sort{ it.toString() }.each() { }%
+                    %{
             selected = false;
             if (entity?.team1?.id == it.id) {
-            selected = true
+              selected = true
             }
-            }%
-            <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
         </select>
-        <p class="help-block error">${errors.forKey('entity.team1')}</p>
-    </div>
+                                      #{ifError 'match.team1'}<span class="help-inline">${errors.forKey('match.team1')}</span>#{/ifError}
+  </div>
 </div>
+#{/field}    #{field 'match.team2'}
 <div class="control-group">
-    <div class="controls docs-input-sizes">
-        <select class="input-xlarge" name="entity.team2.id">
-            <option value="">gegen Team 2</option>
-            %{ models.Team.all().fetch().sort{ it.toString() }.each() { }%
-            %{
+  <label class="control-label" for="${field.name}">Team2</label>  <div class="field">
+                                    <select name="${field.name}.id">
+                                    <option value="">(None)</option>
+                      %{ models.Team.all().fetch().sort{ it.toString() }.each() { }%
+                    %{
             selected = false;
             if (entity?.team2?.id == it.id) {
-            selected = true
+              selected = true
             }
-            }%
-            <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
         </select>
-        <p class="help-block error">${errors.forKey('entity.team2')}</p>
-    </div>
+                                      #{ifError 'match.team2'}<span class="help-inline">${errors.forKey('match.team2')}</span>#{/ifError}
+  </div>
 </div>
+#{/field}    #{field 'match.scoreTeam1'}
 <div class="control-group">
-    <div class="controls docs-input-sizes">
-        <input readonly="readonly" class="input-xlarge" type="text" name="entity.date" value="${entity?.date.format(play.configuration['date.format'])}"/>
-        <p class="help-block error">${errors.forKey('entity.date')}</p>
-    </div>
+  <label class="control-label" for="${field.name}">Score Team1</label>  <div class="field">
+                                              <input type="text" name="${field.name}" value="${field.value}"/>
+        #{ifError 'match.scoreTeam1'}<span class="help-inline">${errors.forKey('match.scoreTeam1')}</span>#{/ifError}
+  </div>
 </div>
-<input type="hidden" name="entity.id" value="${entity?.id}"/>
+#{/field}    #{field 'match.scoreTeam2'}
+<div class="control-group">
+  <label class="control-label" for="${field.name}">Score Team2</label>  <div class="field">
+                                              <input type="text" name="${field.name}" value="${field.value}"/>
+        #{ifError 'match.scoreTeam2'}<span class="help-inline">${errors.forKey('match.scoreTeam2')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}    #{field 'match.date'}
+<div class="control-group">
+  <label class="control-label" for="${field.name}">Date</label>  <div class="field">
+              <script type="text/javascript">
+        $(function() {
+          $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="date" type="text" name="${field.name}"
+        value="${match?.date?.format('yyyy-MM-dd')}"
+        size="10" />
+                                        #{ifError 'match.date'}<span class="help-inline">${errors.forKey('match.date')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}    #{field 'match.id'}
+<div class="control-group">
+    <div class="field">
+                                      <input type="hidden" name="${field.name}" value="${field.value}"/>
+                #{ifError 'match.id'}<span class="help-inline">${errors.forKey('match.id')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}
+

@@ -2,4 +2,11 @@
 
 require:
     - play 1.2.5
-    - play -> scaffold head
+    - local -> play-bootstrap 0.1
+
+repositories:
+    - playCustomModules:
+        type:       local
+        artifact:   ${application.path}/dist/[module]-[revision].zip
+        contains:
+          - local -> *

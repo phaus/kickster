@@ -1,32 +1,17 @@
 #{extends 'main.html' /}
-
-<h2>View Team</h2>
-
-<div class="entity">
-
-  
-	<div class="row">
-		<span class="elem">
-			players:
-		</span>
-		<span class="value">
-      ${entity.players}
-		</span>
-	</div>
-  
-
-  
-	<div class="row">
-		<span class="elem">
-			id:
-		</span>
-		<span class="value">
-      ${entity.id}
-		</span>
-	</div>
-  
-
+#{set title:'Show Team' /}
+<div class="row">
+    <div class="hero-unit">
+        <h2>Show Team</h2>
+        <p>
+        <dl>
+                                    <dt>players</dt><dd>${team.players}</dd>
+                                                <dt>id</dt><dd>${team.id}</dd>
+                                </dl>
+        </p>
+        <p>
+            <a class="btn btn-large btn-primary" href="@{Teams.index}">Back</a>
+        </p>
+    </div>
 </div>
-
-<a href="@{Teams.index}">Back</a>
 

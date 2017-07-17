@@ -1,18 +1,11 @@
-
- <div class="row">
-  <div class="label">Players</div>
-  <div class="field">
-    
-    
-    
-    
-      
-        <select name="entity.players.id" multiple>
+    #{field 'team.players'}
+<div class="control-group">
+  <label class="control-label" for="${field.name}">Players</label>  <div class="field">
+                              <select name="${field.name}.id" multiple>
         %{ models.Player.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{ 
+                    %{
             selected = false;
-            entity?.players.each() { f ->
+            Team?.players.each() { f ->
               if (f.id == it?.id)
                 selected = true;
             }
@@ -20,37 +13,15 @@
           <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
         %{ } }%
         </select>
-      
-      
-    
-    
-    
-    
-    
-    
-    
+                                            #{ifError 'team.players'}<span class="help-inline">${errors.forKey('team.players')}</span>#{/ifError}
   </div>
-  <span class="error">${errors.forKey('entity.players')}</span>
 </div>
-
-
- <div class="row">
-  <div class="label"></div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="hidden" name="entity.id" value="${entity?.id}"/>
-    
-    
-    
+#{/field}    #{field 'team.id'}
+<div class="control-group">
+    <div class="field">
+                                      <input type="hidden" name="${field.name}" value="${field.value}"/>
+                #{ifError 'team.id'}<span class="help-inline">${errors.forKey('team.id')}</span>#{/ifError}
   </div>
-  <span class="error">${errors.forKey('entity.id')}</span>
 </div>
-
+#{/field}
 

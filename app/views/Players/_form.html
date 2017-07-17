@@ -1,34 +1,23 @@
+    #{field 'player.name'}
+<div class="control-group">
+  <label class="control-label" for="${field.name}">Name</label>  <div class="field">
+                                              <input type="text" name="${field.name}" value="${field.value}"/>
+        #{ifError 'player.name'}<span class="help-inline">${errors.forKey('player.name')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}    #{field 'player.score'}
+<div class="control-group">
+  <label class="control-label" for="${field.name}">Score</label>  <div class="field">
+                                              <input type="text" name="${field.name}" value="${field.value}"/>
+        #{ifError 'player.score'}<span class="help-inline">${errors.forKey('player.score')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}    #{field 'player.id'}
+<div class="control-group">
+    <div class="field">
+                                      <input type="hidden" name="${field.name}" value="${field.value}"/>
+                #{ifError 'player.id'}<span class="help-inline">${errors.forKey('player.id')}</span>#{/ifError}
+  </div>
+</div>
+#{/field}
 
-<div class="row">
-    <div class="label">Name</div>
-    <div class="field">
-        <input type="text" name="entity.name" value="${entity?.name}"/>
-    </div>
-    <span class="error">${errors.forKey('entity.name')}</span>
-</div>
-<div class="row">
-    <div class="label">Teams</div>
-    <div class="field">
-        <select name="entity.teams.id" multiple>
-            %{ models.Team.all().fetch().sort{ it.toString() }.each() { }%
-
-            %{
-            selected = false;
-            entity?.teams.each() { f ->
-            if (f.id == it?.id)
-            selected = true;
-            }
-            }%
-            <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-            %{ } }%
-        </select>
-    </div>
-    <span class="error">${errors.forKey('entity.teams')}</span>
-</div>
-<div class="row">
-    <div class="label"></div>
-    <div class="field">
-        <input type="hidden" name="entity.id" value="${entity?.id}"/>
-    </div>
-    <span class="error">${errors.forKey('entity.id')}</span>
-</div>
